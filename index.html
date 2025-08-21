@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InShare</title>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Usar iconos Unicode simples en lugar de Font Awesome para mejor rendimiento -->
     
     <style>
         :root {
@@ -20,12 +19,10 @@
             --shadow-light: rgba(0,0,0,0.132);
             --shadow-dark: rgba(0,0,0,0.108);
 
-            /* Glass-Neumorphism variables */
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: 1px solid rgba(255, 255, 255, 0.3);
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1);
-            --neumorphic-shadow-light: 4px 4px 8px rgba(0,0,0,0.1), -4px -4px 8px rgba(255,255,255,0.7);
-            --neumorphic-shadow-dark: inset 2px 2px 5px rgba(0,0,0,0.1), inset -2px -2px 5px rgba(255,255,255,0.7);
+            /* Simplificadas para mejor rendimiento */
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --glass-border: 1px solid #e0e0e0;
+            --simple-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         * {
@@ -35,8 +32,8 @@
         }
         
         body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #e0e0e0, #f8f8f8);
+            font-family: system-ui, sans-serif;
+            background: #f5f5f5;
             min-height: 100vh;
             color: var(--text-dark);
             line-height: 1.4;
@@ -50,16 +47,13 @@
             width: 100%;
             max-width: 1000px;
             background: var(--glass-bg);
-            border-radius: 20px;
-            box-shadow: var(--glass-shadow);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            border-radius: 8px;
+            box-shadow: var(--simple-shadow);
             border: var(--glass-border);
             overflow: hidden;
             display: flex;
             flex-direction: column;
             min-height: 80vh;
-            animation: fadeIn 0.8s ease-out;
         }
         
         .header {
@@ -74,17 +68,7 @@
             border-top-right-radius: 20px;
         }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
-            transform: rotate(45deg);
-            animation: headerLight 10s infinite linear;
-        }
+        /* Animaciones removidas para mejor rendimiento */
         
         .header h1 {
             font-size: 32px;
@@ -95,7 +79,6 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
         
         .header p {
@@ -119,7 +102,7 @@
             padding: 20px;
             margin-bottom: 32px;
             border-left: 6px solid var(--primary-color);
-            box-shadow: var(--neumorphic-shadow-light);
+            box-shadow: var(--simple-shadow);
             transition: all 0.3s ease;
         }
 
@@ -152,7 +135,7 @@
             font-family: 'Consolas', 'Courier New', monospace;
             font-size: 14px;
             color: var(--text-dark);
-            box-shadow: var(--neumorphic-shadow-dark);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
             user-select: all;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -169,7 +152,7 @@
             border-radius: 12px;
             margin-bottom: 24px;
             overflow: hidden;
-            box-shadow: var(--neumorphic-shadow-light);
+            box-shadow: var(--simple-shadow);
             transition: all 0.3s ease;
             flex-grow: 1;
             display: flex;
@@ -239,7 +222,7 @@
             align-items: center;
             gap: 8px;
             min-height: 40px;
-            box-shadow: var(--neumorphic-shadow-light);
+            box-shadow: var(--simple-shadow);
             text-shadow: 0 1px 1px rgba(255,255,255,0.7);
         }
         
@@ -250,7 +233,7 @@
         }
         
         .file-input-button:active, .upload-btn:active:not(:disabled) {
-            box-shadow: var(--neumorphic-shadow-dark);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
             transform: translateY(0);
         }
         
@@ -272,7 +255,7 @@
             color: var(--text-light);
             border-color: var(--border-light);
             cursor: not-allowed;
-            box-shadow: var(--neumorphic-shadow-dark);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
             text-shadow: none;
             opacity: 0.7;
         }
@@ -339,7 +322,7 @@
             align-items: center;
             gap: 6px;
             min-height: 34px;
-            box-shadow: var(--neumorphic-shadow-light);
+            box-shadow: var(--simple-shadow);
         }
         
         .download-btn {
@@ -356,7 +339,7 @@
         
         .download-btn:active {
             background: rgba(0, 120, 212, 0.5);
-            box-shadow: var(--neumorphic-shadow-dark);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
         }
         
         .delete-btn {
@@ -373,7 +356,7 @@
         
         .delete-btn:active {
             background: rgba(209, 52, 56, 0.5);
-            box-shadow: var(--neumorphic-shadow-dark);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
         }
         
         .status-message {
@@ -386,8 +369,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            box-shadow: var(--neumorphic-shadow-light);
-            animation: fadeIn 0.5s ease-out;
+            box-shadow: var(--simple-shadow);
+            /* Sin animaciones para mejor rendimiento */
         }
         
         .success {
@@ -419,7 +402,7 @@
             margin-top: 16px;
             text-align: left;
             font-size: 14px;
-            box-shadow: var(--neumorphic-shadow-dark);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
         }
         
         .selected-files strong {
@@ -437,7 +420,7 @@
             height: 25px;
             overflow: hidden;
             position: relative;
-            box-shadow: var(--neumorphic-shadow-dark);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
         }
 
         .progress-bar {
@@ -478,18 +461,7 @@
             z-index: 1;
         }
         
-        /* Keyframe Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes headerLight {
-            0% { transform: rotate(45deg) translate(-10%, -10%); }
-            50% { transform: rotate(45deg) translate(10%, 10%); }
-            100% { transform: rotate(45deg) translate(-10%, -10%); }
-        }
-
+        /* Solo animación esencial de progreso */
         @keyframes progressStripe {
             0% { left: -100%; }
             100% { left: 100%; }
@@ -565,7 +537,7 @@
             font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: var(--neumorphic-shadow-light);
+            box-shadow: var(--simple-shadow);
             border: var(--glass-border);
         }
 
@@ -581,7 +553,7 @@
         }
 
         .modal-btn.primary-btn:active {
-            box-shadow: var(--neumorphic-shadow-dark);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
         }
 
         .modal-btn.secondary-btn {
@@ -596,7 +568,7 @@
         }
 
         .modal-btn.secondary-btn:active {
-            box-shadow: var(--neumorphic-shadow-dark);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
         }
 
         /* Responsive design */
@@ -658,7 +630,7 @@
     <div class="container">
         <div class="header">
             <h1>
-                <i class="fas fa-share-alt"></i> InShare
+                📎 InShare
             </h1>
             <p>Comparte archivos en 2 clics</p>
         </div>
@@ -666,7 +638,7 @@
         <div class="content">
             <div class="network-info">
                 <h3>
-                    <i class="fas fa-network-wired"></i> Enviar acceso a la web
+                    🌐 Enviar acceso a la web
                 </h3>
                 <p><strong>Acceso público:</strong> <code id="networkUrl">Cargando...</code></p>
                 <p>Comparte la URL de red con otros dispositivos para que puedan acceder</p>
@@ -675,7 +647,7 @@
             <div class="section upload-section">
                 <div class="section-header">
                     <h2>
-                        <i class="fas fa-cloud-upload-alt"></i> Subir Archivos
+                        ⬆️ Subir Archivos
                     </h2>
                 </div>
                 <div class="section-content">
@@ -683,11 +655,11 @@
                         <div class="file-input-wrapper">
                             <input type="file" id="fileInput" name="files" multiple>
                             <label for="fileInput" class="file-input-button">
-                                <i class="fas fa-folder-open"></i> Seleccionar Archivos
+                                📁 Seleccionar Archivos
                             </label>
                         </div>
                         <button type="submit" class="upload-btn" id="uploadBtn" disabled>
-                            <i class="fas fa-upload"></i> Subir Archivos
+                            ⬆️ Subir Archivos
                         </button>
                     </form>
                     <div id="selectedFiles"></div>
@@ -703,7 +675,7 @@
             <div class="section files-section">
                 <div class="section-header">
                     <h2>
-                        <i class="fas fa-file-alt"></i> Archivos Disponibles
+                        📄 Archivos Disponibles
                     </h2>
                 </div>
                 <div class="section-content">
@@ -839,7 +811,7 @@
             
             const files = fileInput.files;
             if (files.length === 0) {
-                uploadStatus.innerHTML = '<div class="status-message error"><i class="fas fa-exclamation-triangle"></i> Por favor, selecciona al menos un archivo.</div>';
+                uploadStatus.innerHTML = '<div class="status-message error">⚠️ Por favor, selecciona al menos un archivo.</div>';
                 setTimeout(() => uploadStatus.innerHTML = '', 5000);
                 return;
             }
@@ -850,7 +822,7 @@
             }
             
             uploadBtn.disabled = true;
-            uploadBtn.innerHTML = '<span><i class="fas fa-hourglass-half"></i></span>Subiendo...';
+            uploadBtn.innerHTML = '⏳ Subiendo...';
             uploadStatus.innerHTML = ''; // Clear previous status
             progressBarContainer.style.display = 'block'; // Show progress bar
             progressBar.style.width = '0%';
@@ -871,18 +843,18 @@
             xhr.onload = function() {
                 progressBar.classList.remove('progress-bar-animation'); // Remove animation
                 uploadBtn.disabled = false;
-                uploadBtn.innerHTML = '<i class="fas fa-upload"></i> Subir Archivos';
+                uploadBtn.innerHTML = '⬆️ Subir Archivos';
 
                 if (xhr.status >= 200 && xhr.status < 300) {
                     const result = JSON.parse(xhr.responseText);
-                    uploadStatus.innerHTML = '<div class="status-message success"><i class="fas fa-check-circle"></i> Archivos subidos correctamente</div>';
+                    uploadStatus.innerHTML = '<div class="status-message success">✅ Archivos subidos correctamente</div>';
                     uploadForm.reset();
                     selectedFiles.innerHTML = '';
                     uploadBtn.disabled = true;
                     loadFiles();
                 } else {
                     const errorResult = JSON.parse(xhr.responseText);
-                    uploadStatus.innerHTML = '<div class="status-message error"><i class="fas fa-times-circle"></i> Error: ' + (errorResult.error || 'Error desconocido') + '</div>';
+                    uploadStatus.innerHTML = '<div class="status-message error">❌ Error: ' + (errorResult.error || 'Error desconocido') + '</div>';
                 }
                 setTimeout(() => {
                     uploadStatus.innerHTML = '';
@@ -893,8 +865,8 @@
             xhr.onerror = function() {
                 progressBar.classList.remove('progress-bar-animation'); // Remove animation
                 uploadBtn.disabled = false;
-                uploadBtn.innerHTML = '<i class="fas fa-upload"></i> Subir Archivos';
-                uploadStatus.innerHTML = '<div class="status-message error"><i class="fas fa-times-circle"></i> Error de conexión</div>';
+                uploadBtn.innerHTML = '⬆️ Subir Archivos';
+                uploadStatus.innerHTML = '<div class="status-message error">❌ Error de conexión</div>';
                 setTimeout(() => {
                     uploadStatus.innerHTML = '';
                     progressBarContainer.style.display = 'none'; // Hide progress bar after completion/error
@@ -924,8 +896,8 @@
                         fileListHTML += '<div class="file-meta">' + file.size + ' • ' + file.uploadDate + '</div>';
                         fileListHTML += '</div>';
                         fileListHTML += '<div class="file-actions">';
-                        fileListHTML += '<a href="/download/' + encodeURIComponent(file.filename) + '" class="download-btn"><i class="fas fa-download"></i> Descargar</a>';
-                        fileListHTML += '<button onclick="deleteFile(\'' + file.filename.replace(/'/g, "\\'") + '\')" class="delete-btn"><i class="fas fa-trash-alt"></i> Eliminar</button>';
+                        fileListHTML += '<a href="/download/' + encodeURIComponent(file.filename) + '" class="download-btn">⬇️ Descargar</a>';
+                        fileListHTML += '<button onclick="deleteFile(\'' + file.filename.replace(/'/g, "\\'") + '\')" class="delete-btn">🗑️ Eliminar</button>';
                         fileListHTML += '</div>';
                         fileListHTML += '</div>';
                     });
@@ -967,8 +939,8 @@
         // Cargar archivos al inicio
         loadFiles();
         
-        // Actualizar lista cada 30 segundos
-        setInterval(loadFiles, 30000); 
+        // Actualizar lista cada 60 segundos (reducido para mejor rendimiento)
+        setInterval(loadFiles, 60000); 
     </script>
 </body>
 </html>
